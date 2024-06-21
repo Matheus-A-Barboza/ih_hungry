@@ -26,7 +26,6 @@ flutter:
     - assets/Subway.png
     - assets/MiniKalzone.jpeg
     - assets/Girafas.jpeg
-    - assets/hamei.jpeg
     - assets/frango_defumado.jpeg
     - assets/frango_teriyaki.jpg
     - assets/carne_seca.jpg
@@ -36,9 +35,8 @@ flutter:
     - assets/almoco.jpeg
     - assets/salada.jpeg
     - assets/feijoada.jpeg
-    - assets/salmao.jpg
-    - assets/hot.jpeg
-    - assets/combo.jpg
+    - assets/user_avatar.jpeg
+    
   uses-material-design: true
   # assets:
   #  - images/a_dot_burr.jpeg

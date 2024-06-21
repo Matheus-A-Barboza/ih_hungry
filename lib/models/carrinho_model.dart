@@ -27,6 +27,11 @@ class CarrinhoModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void cleanCart(){
+    items.clear();
+    notifyListeners();
+  }
+
   int getTotalItems() {
     return items.length;
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:im_hungry/views/categoria.dart';
 import 'package:im_hungry/views/pedido.dart';
+import 'package:im_hungry/views/profile.dart';
 import 'package:im_hungry/views/restaurante.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _pages = <Widget>[
     HomePageContent(),
     Pedido(),
+    Perfil(),
   ];
 
   @override
@@ -38,6 +40,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Carrinho',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -203,20 +209,23 @@ class HomePageContent extends StatelessWidget {
             {
               'name': 'Sanduíche de Frango Defumado com Cream Cheese',
               'price': '20',
-              'description': 'TESTE',
               'image': 'assets/frango_defumado.jpeg',
+              'description': 'Cubos de frango defumado misturados com o delicioso cream cheese.'
+                ' Uma delicia de dar água da boca. Nos tamanhos de 15cm e 30cm, para você fazer como quiser!',
             },
             {
               'name': 'Sanduíche de Carne Seca',
               'price': '30',
-              'description': 'TESTE',
               'image': 'assets/carne_seca.jpg',
+              'description': 'Carne Seca com Cream Cheese traz a saborosa combinação de pão italiano,'
+                ' carne seca com cream cheese, muçarela ralada, tomate, cebola roxa, alface e maionese.',
             },
             {
               'name': 'Sanduíche de Frango Teriyaki',
               'price': '15',
-              'description': 'TESTE',
               'image': 'assets/frango_teriyaki.jpg',
+              'description': 'Frango Teriyaki, com pedaços suculentos de peito de frango e o delicioso molho teriyaki.'
+                ' Nos tamanhos de 15cm e 30cm, para você fazer como quiser!',
             },
           ]
         };
@@ -229,20 +238,20 @@ class HomePageContent extends StatelessWidget {
             {
               'name': 'Kalzone de Calabresa',
               'price': '20',
-              'description': 'TESTE',
               'image': 'assets/calabresa.jpg',
+              'description': 'Calzone de Calabresa com Queijo',
             },
             {
               'name': 'Kalzone de Carne Seca',
               'price': '30',
-              'description': 'TESTE',
               'image': 'assets/carne.png',
+              'description': 'Calzone de Carne Seca',
             },
             {
               'name': 'Kalzone de 4 Queijos',
               'price': '15',
-              'description': 'TESTE',
               'image': 'assets/queijo.jpg',
+              'description': 'Calzone de 4Queijos',
             },
           ]
         };
@@ -255,46 +264,20 @@ class HomePageContent extends StatelessWidget {
             {
               'name': 'Almoço Executivo',
               'price': '20',
-              'description': 'TESTE',
               'image': 'assets/almoco.jpeg',
+              'description': 'Almoço Executivo contém: Arroz, Feijao, Macarrão, Salada, Carne Bovina e Frango',
             },
             {
               'name': 'Feijoada',
               'price': '30',
-              'description': 'TESTE',
               'image': 'assets/feijoada.jpeg',
+              'description': 'Feijoada',
             },
             {
               'name': 'Salada',
               'price': '15',
-              'description': 'TESTE',
               'image': 'assets/salada.jpeg',
-            },
-          ]
-        };
-        break;
-      case 'Hamei':
-        restaurantData = {
-          'name': 'Hamei',
-          'logo': 'assets/hamei.jpeg',
-          'menu': [
-            {
-              'name': 'Barca de Salmão',
-              'price': '20',
-              'description': 'TESTE',
-              'image': '',
-            },
-            {
-              'name': '80 pcs Hot',
-              'price': '30',
-              'description': 'TESTE',
-              'image': '',
-            },
-            {
-              'name': 'Combo de Sushi',
-              'price': '15',
-              'description': 'TESTE',
-              'image': '',
+              'description': 'Salada',
             },
           ]
         };

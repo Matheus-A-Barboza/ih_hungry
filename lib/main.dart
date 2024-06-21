@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:im_hungry/views/carrinho.dart';
+import 'package:im_hungry/models/carrinho_model.dart';
 import 'package:im_hungry/views/pedido.dart';
 import 'package:provider/provider.dart';
 import 'package:im_hungry/views/home_page.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:im_hungry/models/carrinho_model.dart';
+import 'package:im_hungry/views/home_page.dart';
 import 'package:provider/provider.dart';
-import 'package:im_hungry/views/carrinho.dart'; // Certifique-se de ajustar o caminho da importação
 
 class Pedido extends StatelessWidget {
   @override
@@ -25,12 +26,12 @@ class Pedido extends StatelessWidget {
                     Text('${item.price}'),
                     IconButton(
                       icon: Icon(Icons.delete),
-                      onPressed: (){
+                      onPressed: () {
                         carrinho.removeFromCarrinho(item);
                       },
-                    )
+                    ),
                   ],
-                )
+                ),
               );
             },
           );
@@ -48,9 +49,11 @@ class Pedido extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    // Adicione a lógica para finalizar o pedido
-                  },
+                  onPressed: carrinho.items.isEmpty
+                      ? null
+                      : () {
+                          _showPedidoEfetuadoDialog(context, carrinho);
+                        },
                   child: Text('Finalizar Pedido'),
                 ),
               ],
@@ -58,6 +61,31 @@ class Pedido extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+  void _showPedidoEfetuadoDialog(BuildContext context, CarrinhoModel carrinho) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Pedido efetuado'),
+          content: Text('Seu pedido foi efetuado com sucesso!'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Fecha o dialogo
+                carrinho.cleanCart(); // Limpa o carrinho
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                  (Route<dynamic> route) => false,
+                );
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

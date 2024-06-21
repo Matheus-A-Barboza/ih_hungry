@@ -63,81 +63,81 @@ send_feedback(message) async {
   }, SetOptions(merge: true));
 }
 
-get_items() async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  var db = FirebaseFirestore.instance;
-  var items = await db.collection('Items').get();
-  items.docs.forEach((item) => {print(item.data())});
-  return items.docs;
-}
+// // get_items() async {
+// //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //   var db = FirebaseFirestore.instance;
+// //   var items = await db.collection('Items').get();
+// //   items.docs.forEach((item) => {print(item.data())});
+// //   return items.docs;
+// // }
 
-get_categories() async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  var db = FirebaseFirestore.instance;
-  var items = await db.collection('Categories').get();
-  items.docs.forEach((item) => {print(item.data())});
-  return items.docs;
-}
+// // get_categories() async {
+// //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //   var db = FirebaseFirestore.instance;
+// //   var items = await db.collection('Categories').get();
+// //   items.docs.forEach((item) => {print(item.data())});
+// //   return items.docs;
+// // }
 
-set_cart(List<dynamic> item) async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  var db = FirebaseFirestore.instance;
-  var auth = FirebaseAuth.instance;
-  print(item);
-  try {
-    await db.collection('Users').doc(auth.currentUser!.uid).update({
-      'cart': FieldValue.arrayUnion(item),
-    });
-  } catch (e) {
-    print(e);
-  }
-}
+// // set_cart(List<dynamic> item) async {
+// //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //   var db = FirebaseFirestore.instance;
+// //   var auth = FirebaseAuth.instance;
+// //   print(item);
+// //   try {
+// //     await db.collection('Users').doc(auth.currentUser!.uid).update({
+// //       'cart': FieldValue.arrayUnion(item),
+// //     });
+// //   } catch (e) {
+// //     print(e);
+// //   }
+// // }
 
-get_cart() async{
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  var db = FirebaseFirestore.instance;
-  var auth = FirebaseAuth.instance;
-  var user = await db.collection('Users').doc(auth.currentUser!.uid).get();
-  var cart = user['cart'];
-  return cart;
-}
+// // get_cart() async{
+// //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //   var db = FirebaseFirestore.instance;
+// //   var auth = FirebaseAuth.instance;
+// //   var user = await db.collection('Users').doc(auth.currentUser!.uid).get();
+// //   var cart = user['cart'];
+// //   return cart;
+// // }
 
-buy_cart(items) async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  var db = FirebaseFirestore.instance;
-  var auth = FirebaseAuth.instance;
-  await db.collection('Users').doc(auth.currentUser!.uid).set({
-    'historic': FieldValue.arrayUnion([items]),
-  }, SetOptions(merge: true));
-}
+// // buy_cart(items) async {
+// //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //   var db = FirebaseFirestore.instance;
+// //   var auth = FirebaseAuth.instance;
+// //   await db.collection('Users').doc(auth.currentUser!.uid).set({
+// //     'historic': FieldValue.arrayUnion([items]),
+// //   }, SetOptions(merge: true));
+// // }
 
-get_wishlist() async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  var db = FirebaseFirestore.instance;
-  var auth = FirebaseAuth.instance;
-  var user = await db.collection('Users').doc(auth.currentUser!.uid).get();
-  var wishlist = user['wishlist'];
-  var itemsQuery = await db
-      .collection('Items')
-      .where(FieldPath.documentId, whereIn: wishlist)
-      .get();
+// // get_wishlist() async {
+// //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //   var db = FirebaseFirestore.instance;
+// //   var auth = FirebaseAuth.instance;
+// //   var user = await db.collection('Users').doc(auth.currentUser!.uid).get();
+// //   var wishlist = user['wishlist'];
+// //   var itemsQuery = await db
+// //       .collection('Items')
+// //       .where(FieldPath.documentId, whereIn: wishlist)
+// //       .get();
 
-  var items = itemsQuery.docs.toList();
-  print(itemsQuery.docs);
-  return itemsQuery.docs;
-}
+// //   var items = itemsQuery.docs.toList();
+// //   print(itemsQuery.docs);
+// //   return itemsQuery.docs;
+// // }
 
 
-set_wishlist(item) async {
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  var db = FirebaseFirestore.instance;
-  var auth = FirebaseAuth.instance;
-  print("OK");
-  try {
-    await db.collection('Users').doc(auth.currentUser!.uid).set({
-      'wishlist': FieldValue.arrayUnion(item),
-    }, SetOptions(merge: true));
-  } catch (e) {
-    print(e);
-  }
-}
+// // set_wishlist(item) async {
+// //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //   var db = FirebaseFirestore.instance;
+// //   var auth = FirebaseAuth.instance;
+// //   print("OK");
+// //   try {
+// //     await db.collection('Users').doc(auth.currentUser!.uid).set({
+// //       'wishlist': FieldValue.arrayUnion(item),
+// //     }, SetOptions(merge: true));
+// //   } catch (e) {
+// //     print(e);
+// //   }
+// // }
