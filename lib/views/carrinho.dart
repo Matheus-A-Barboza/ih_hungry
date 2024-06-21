@@ -14,15 +14,17 @@ class Itens {
   });
 }
 
-class Carrinho {
+class CarrinhoModel extends ChangeNotifier {
   final List<Itens> items = [];
 
   void addToCarrinho(Itens item) {
     items.add(item);
+    notifyListeners();
   }
 
   void removeFromCarrinho(Itens item) {
     items.remove(item);
+    notifyListeners();
   }
 
   int getTotalItems() {

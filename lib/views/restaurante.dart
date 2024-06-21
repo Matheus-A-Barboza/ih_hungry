@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:im_hungry/views/carrinho.dart';
+import 'package:im_hungry/views/produto.dart';
+import 'package:provider/provider.dart';
 
 class Restaurante extends StatelessWidget {
   final String name;
@@ -15,6 +18,24 @@ class Restaurante extends StatelessWidget {
     required this.logo,
     required this.menu,
   }) : super(key: key);
+
+  void _addToCarrinho(BuildContext context, Map<String, dynamic> item) {
+    var newItem = Itens(
+      name: item['name'],
+      price: item['price'],
+      description: item['description'],
+      image: item['image'],
+    );
+
+    Provider.of<CarrinhoModel>(context, listen: false).addToCarrinho(newItem);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${item['name']} adicionado ao carrinho.'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +81,7 @@ class Restaurante extends StatelessWidget {
                                   _addToCarrinho(context, item);
                                 },
                                 child: Text('Adicionar ao Carrinho'),
+                                
                               ),
                               Divider(),
                             ],
@@ -84,16 +106,5 @@ class Restaurante extends StatelessWidget {
     );
   }
 
-  void _addToCarrinho(BuildContext context, Map<String, dynamic> item) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${item['name']} adicionado ao carrinho.'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-
-    // Aqui você adicionaria o item ao carrinho
-    // Exemplo:
-    // cart.addToCart(item);
-  }
+  
 }

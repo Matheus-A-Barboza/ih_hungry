@@ -17,6 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
 
   Future<void> handleRegister() async {
     if (userController.text.isEmpty ||
@@ -51,6 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
         passwordController.text,
         userController.text,
         phoneNumberController.text,
+        addressController.text
       );
 
       if (result) {
@@ -102,6 +104,11 @@ class _RegisterPageState extends State<RegisterPage> {
           MyInput(
             controller: phoneNumberController,
             placeholder: 'Número de Telefone',
+            type: false,
+          ),
+          MyInput(
+            controller: addressController,
+            placeholder: 'Endereço',
             type: false,
           ),
           MyInput(
